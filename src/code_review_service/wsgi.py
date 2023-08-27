@@ -1,5 +1,5 @@
 """
-WSGI config for service_code_review project.
+WSGI config for code_review_service project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'service_code_review.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'code_review_service.settings')
 
 application = get_wsgi_application()

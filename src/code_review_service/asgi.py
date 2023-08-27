@@ -1,5 +1,5 @@
 """
-ASGI config for service_code_review project.
+ASGI config for code_review_service project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'service_code_review.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'code_review_service.settings')
 
 application = get_asgi_application()
