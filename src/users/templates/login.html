@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход</title>
+</head>
+<body>
+
+<div>
+    <h1 style="color: white,background-color: black" align="center">Вход</h1>
+    <h2>{{ content }}</h2>
+    {{ errors }}
+    <form method="POST" action="/login/">
+        {{ form.as_div }}
+        {% csrf_token %}
+        <button type="submit">Войти</button>
+    </form>
+    <a href="/register/"><button>Регистрация</button></a>
+
+</div>
+
+</body>
+</html>
