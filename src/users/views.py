@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpRequest, HttpResponse, JsonResponse, HttpResponseBadRequest
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from uploads.models import Upload
 from .forms import CustomUserCreationForm, LoginForm
 from .models import CustomUser
 # Create your views here.
@@ -38,7 +39,4 @@ def login_view(request: HttpRequest):
         elif not form.is_valid():
             return render(request, "login.html", {"content": "Неверный Email или пароль.",
                                                   "form": LoginForm, "errors": form.errors})
-@login_required
-def home_view(request: HttpRequest):
-    return render(request, "index.html")
 
