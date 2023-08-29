@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cool</title>
+</head>
+<body>
+<header>
+    {{ user }}
+    <a href="/logout/"><button>Выход</button></a>
+</header>
+<h2 align="center">Список файлов</h2>
+<table>
+    <tr>
+        {% for header in headers %}
+        <th>{{ header }}</th>
+        {% endfor %}
+    </tr>
+    {% if not items %}
+    <tr>{{ message }}</tr>
+    {% else %}
+    {% for item in items %}
+    <td> {{ item.file }}</td>
+    <td> {{ item.state }}</td>
+    {% endfor %}
+    {% endif %}
+</table>
+</body>
+</html>
