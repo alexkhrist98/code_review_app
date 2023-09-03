@@ -6,18 +6,19 @@
 </head>
 <body>
 <header>
-    {{ user }}
-    <a href="/logout/"><button>Выход</button></a>
+    {% include "user_header.html" %}
 </header>
 <h2 align="center">Список файлов</h2>
+<div>
 <table>
+    <a href="/upload/"><button>Добавить файл</button></a>
     <tr>
         {% for header in headers %}
         <th>{{ header }}</th>
         {% endfor %}
     </tr>
     {% if not items %}
-    <tr>{{ message }}</tr>
+    <td>{{ message }}</td>
     {% else %}
     {% for item in items %}
     <td> {{ item.file }}</td>
@@ -25,5 +26,6 @@
     {% endfor %}
     {% endif %}
 </table>
+</div>
 </body>
 </html>

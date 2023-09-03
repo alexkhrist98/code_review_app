@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить файл на проверку</title>
+</head>
+<body>
+<heder>
+  {% include "user_header.html" %}
+        <a href="/"><button>На главынй экран</button></a>
+
+</heder>
+<h2>Загрузить файл</h2>
+{{ errors }}
+<form method="POST" action="/upload/", enctype="multipart/form-data">
+  {{ form.as_div }}
+  {% csrf_token %}
+  <button type="submit">Готово!</button>
+</form>
+</body>
+</html>
