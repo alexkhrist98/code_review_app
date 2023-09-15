@@ -41,18 +41,25 @@ def upload_file_view(request: HttpRequest):
                                                    "errors": form.errors})
 
 @login_required
-def upload_detail_view(request: HttpRequest, file_path: str):
+def upload_detail_view(request: HttpRequest, user:str, file:str):
+    if str(request.user) != user and request.method:
+        return HttpResponseForbidden()
+
     if request.method == "GET":
         try:
-            file = Upload.objects.filter(file_path)
-        except ObjectDoesNotExist
+            file_instance = Upload.objects.filter(file=("submissions" + "/" + user + "/" + file)) 
+        except ObjectDoesNotExist: 
             return HttpResponseNotFound
         except SuspiciousFileOperation:
             return HttpResponseBadRequest
+        file = file_instance[0]
+        with open(str(file.file), "r") as f:
+            file_content = f.read()
+        
+        
 
-        if file.author != request.user:
-            return HttpResponseForbidden
-        form = UploadDetailForm(initial={"file": file.file, "author": file.author, "state": file.state})
+        
+        form = UploadDetailForm(initial={"author": file.author, "state": file.state, "file_content": file_content})
         return render(request, "upload_detail.html", {"user": request.user,
                                                       "form": form})
 

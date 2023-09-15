@@ -12,13 +12,8 @@ class UploadForm(forms.Form):
                 raise forms.ValidationError("Only .py files are allowed")
             return file
 
-class UploadDetailForm(forms.ModelForm):
-    class Meta:
-        model = Upload
-        fields = ["author", "file", "state"]
-        labels = {
-            "author": "Автора",
-            "file": "Содержимое файла",
-            "State": "Состояние"
-        }
-
+class UploadDetailForm(forms.Form):
+    author = forms.CharField(label="Автор", max_length=255, disabled=True)
+    state = forms.CharField(label="Состояние", max_length=255, disabled=True)
+    file_content = forms.FileField(label="Содержимое файла", widget=forms.Textarea, disabled=True)
+    
