@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import CustomUserCreationForm, LoginForm
 from django.urls import reverse
 from .models import CustomUser
+from django.templatetags.static import static 
 # Create your views here.
 
 def register_view(request: HttpRequest):
@@ -20,6 +21,10 @@ def register_view(request: HttpRequest):
         if not form.is_valid():
             return render(request, "register.html", {"form": CustomUserCreationForm,
                                                      "errors": form.errors})
+
+def favicon_view(request):
+         favicon_path = static('favicon.ico')
+         return HttpResponse(favicon_path, content_type='image/x-icon')
 
 def login_view(request: HttpRequest):
     if request.method == "GET":
